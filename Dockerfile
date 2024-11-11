@@ -5,7 +5,7 @@ FROM nvidia/cuda:11.4.3-base-ubuntu20.04
 LABEL maintainer="Christoph Werner <christoph.werner@hs-wismar.de>"
 LABEL version="1.0"
 LABEL description="Image to run scripts from GitHub Repo 'S3BERT: Semantically Structured Sentence Embeddings' easily with all dependencies"
-LABEL build_date="2024-10-16"
+LABEL build_date="2024-11-11"
 LABEL org.opencontainers.image.source="https://github.com/chr-werner/S3BERT"
 LABEL org.opencontainers.image.documentation="https://github.com/chr-werner/S3BERT/README.md"
 
@@ -13,9 +13,12 @@ LABEL org.opencontainers.image.documentation="https://github.com/chr-werner/S3BE
 ARG CITY="UTC"
 ARG TIMEZONE="UTC"
 
-# Example of how to use these variables (set environment variables or configure the system)
+# Set environment variables
 ENV CITY=$CITY
 ENV TIMEZONE=$TIMEZONE
+
+# Set noninteractive frontend to avoid prompts
+ENV DEBIAN_FRONTEND=noninteractive
 
 # You can also use this argument to configure system settings, like setting the time zone.
 RUN ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && \
